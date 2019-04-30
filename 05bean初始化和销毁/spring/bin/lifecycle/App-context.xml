@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+		init-method:定义初始化方法，在构造器执行之后立马执行
+		destroy-method:定义销毁之前的方法，在销毁执行之前调用
+	-->
+	<bean id="ds" class="lifecycle.MyDateSource" init-method="open" destroy-method="close" />
+	
+	<!-- 如果bean的scope="prototype"多例，那么容器只负责创建和初始化，因为spring不知后面是否继续使用，
+	若继续使用又要重新初始化一次，成本将会非常大，所以spring默认不执行扫尾操作，需手动调用close方法 -->
+	
+</beans>
